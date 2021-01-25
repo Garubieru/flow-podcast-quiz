@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const SVGWrapper = styled.svg`
-  fill: ${({ theme }) => theme.colors.primary};
+  fill: ${({ theme }) => theme.colors.primaryDark};
   color: ${({ theme }) => theme.colors.black};
   cursor: pointer;
   transition: 0.3s;

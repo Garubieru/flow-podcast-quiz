@@ -1,7 +1,7 @@
 {
-  "bg": "https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/bg-default.jpg",
-  "title": "Lol Quiz",
-  "description": "Test your League of Legends knowledge.",
+  "bg": "https://i.imgur.com/TIeypHt.png",
+  "title": "Flow Quiz",
+  "description": "Teste seu conhecimento sobre o Flow Podcast",
   "questions": [
     {
       "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
@@ -24,16 +24,16 @@
   "external": [""],
   "theme": {
     "colors": {
-      "primary": "#a6f5d8",
-      "primaryDark": "#3a7875",
-      "secondary": "#f4de93",
-      "secondaryDark": "#ae914b",
-      "mainBg": "#0e191b",
+      "primary": "#dee01f",
+      "primaryDark": "#bc9035",
+      "secondary": "#9a9997",
+      "secondaryDark": "#242424",
+      "secondaryDarker": "#0e0e0e",
+      "mainBg": "#000000",
       "wrong": "#c91d1d",
       "success": "#19df5c",
-      "white": "#ffffff",
-      "black": "#000000"
+      "white": "#f8f8f8"
     },
-    "borderRadius": "0.8rem"
+    "borderRadius": "0.5rem"
   }
 }

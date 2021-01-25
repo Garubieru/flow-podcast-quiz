@@ -1,37 +1,7 @@
 import Head from 'next/head';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from '../src/styles/GlobalStyles';
 import db from '../db.json';
-
-const GlobalStyle = createGlobalStyle`
-  :root {
-    font-size: 62.5%
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    box-sizing: border-box;
-  }
-
-  html, body {
-    min-height: 100vh;
-  }
-
-  body {
-    display: flex;
-    flex-direction: column;
-
-    font: 500 1.6rem "Segoe UI";
-    color: ${({ theme }) => theme.colors.primary} 
-  }
-
-  #__next {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-`;
 
 const theme = db.theme;
 
@@ -47,6 +17,11 @@ export default function App({ Component, pageProps }) {
         <meta property="og:title" content={db.title} />
         <meta property="og:image" content={db.bg} />
         <meta property="og:description" content={db.description} />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
+          rel="stylesheet"
+        ></link>
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
