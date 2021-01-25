@@ -39,6 +39,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <title>{db.title}</title>
         <meta name="title" content={db.title} />
         <meta name="description" content={db.description} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
