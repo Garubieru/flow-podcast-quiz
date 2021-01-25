@@ -1,7 +1,7 @@
 {
   "bg": "https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/bg-default.jpg",
-  "title": "QuizLOL",
-  "description": "Test your League of Legends knowledge ",
+  "title": "Lol Quiz",
+  "description": "Test your League of Legends knowledge.",
   "questions": [
     {
       "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",

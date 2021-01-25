@@ -39,7 +39,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <meta name="title" content="LoL Quiz" />
+        <meta name="title" content={db.title} />
         <meta name="description" content={db.description} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
