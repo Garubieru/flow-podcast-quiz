@@ -103,6 +103,7 @@ Widget.Button = styled.button`
 
 Widget.SuggestionWrapper = styled.section`
   article {
+    cursor: pointer;
     background: ${({ theme }) => theme.colors.secondaryDarker};
     color: ${({ theme }) => theme.colors.white};
     padding: 1.2rem;
@@ -112,6 +113,12 @@ Widget.SuggestionWrapper = styled.section`
     & + article {
       margin-top: 1.2rem;
     }
+
+    &:hover {
+      background: #000000;
+    }
+
+    transition: 0.3s;
   }
 `;
 
