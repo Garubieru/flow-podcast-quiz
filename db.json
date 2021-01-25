@@ -1,0 +1,39 @@
+{
+  "bg": "https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/bg-default.jpg",
+  "title": "QuizLOL",
+  "description": "Test your League of Legends knowledge ",
+  "questions": [
+    {
+      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
+      "title": "Como fazer um seletor por id via CSS?",
+      "description": "Essa é pra aquecer",
+      "answer": 2,
+      "alternatives": [".elemento", "*elemento", "#elemento", "%elemento"]
+    },
+    {
+      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+      "title": "Como fazer um background gradiente com css?",
+      "description": "Faz tempo em haha",
+      "answer": 0,
+      "alternatives": [
+        "background: linear-gradient(#e66465, #9198e5);",
+        "background: gradient(#e66465, #9198e5);"
+      ]
+    }
+  ],
+  "external": [""],
+  "theme": {
+    "colors": {
+      "primary": "#a6f5d8",
+      "primaryDark": "#3a7875",
+      "secondary": "#f4de93",
+      "secondaryDark": "#ae914b",
+      "mainBg": "#0e191b",
+      "wrong": "#c91d1d",
+      "success": "#19df5c",
+      "white": "#ffffff",
+      "black": "#000000"
+    },
+    "borderRadius": "0.8rem"
+  }
+}
