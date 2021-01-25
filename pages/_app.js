@@ -39,11 +39,13 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>LoL quiz</title>
+        <meta name="title" content="LoL Quiz" />
+        <meta name="description" content={db.description} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta property="og:title" content={db.title} key="title" />
-        <meta property="og:image" content={db.bg} key="image" />
-        <meta property="og:description" content={db.description} key="description" />
+
+        <meta property="og:title" content={db.title} />
+        <meta property="og:image" content={db.bg} />
+        <meta property="og:description" content={db.description} />
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
