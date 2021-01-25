@@ -42,8 +42,8 @@ export default function App({ Component, pageProps }) {
         <title>LoL quiz</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:title" content={db.title} key="title" />
-        <meta property="og:image" content={db.bg} key="title" />
-        <meta property="og:description" content={db.description} key="title" />
+        <meta property="og:image" content={db.bg} key="image" />
+        <meta property="og:description" content={db.description} key="description" />
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
