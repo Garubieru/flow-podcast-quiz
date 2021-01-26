@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const QuizBackground = styled.div`
+export const QuizBackground = styled.div`
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -34,4 +34,24 @@ const QuizBackground = styled.div`
   }
 `;
 
-export default QuizBackground;
+export const QuizContainer = styled.div`
+  width: 100%;
+  max-width: 400px;
+  margin: auto 10%;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    align-self: center;
+  }
+
+  @media screen and (max-width: 500px) {
+    margin: auto;
+    padding-top: 1.2rem;
+
+    img {
+      align-self: flex-start;
+    }
+  }
+`;

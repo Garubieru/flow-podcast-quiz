@@ -20,6 +20,11 @@ const Widget = styled.div`
     font-weight: 400;
     line-height: 1;
   }
+
+  .error {
+    color: ${({ theme }) => theme.colors.wrong};
+    margin-top: 0.8rem;
+  }
 `;
 
 Widget.Header = styled.header`
@@ -44,9 +49,21 @@ Widget.Content = styled.div`
   }
 `;
 
+Widget.Image = styled.div`
+  background-image: url(${(props) => props.url});
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 180px;
+`;
+
 Widget.Input = styled.input`
   background: none;
-  border: 1px solid ${({ theme }) => theme.colors.primaryDark};
+  border: 1px solid
+    ${(props) =>
+      props.isError
+        ? ({ theme }) => theme.colors.wrong
+        : ({ theme }) => theme.colors.primaryDark};
 
   width: 100%;
   height: 5rem;
@@ -58,7 +75,10 @@ Widget.Input = styled.input`
   color: ${({ theme }) => theme.colors.white};
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors.primaryDark};
+    color: ${(props) =>
+      props.isError
+        ? ({ theme }) => theme.colors.wrong
+        : ({ theme }) => theme.colors.primaryDark};
   }
 
   &:hover,
@@ -101,16 +121,18 @@ Widget.Button = styled.button`
   }
 `;
 
-Widget.SuggestionWrapper = styled.section`
-  article {
+Widget.AnswersWrapper = styled.section`
+  button {
     cursor: pointer;
+    width: 100%;
+    border: none;
     background: ${({ theme }) => theme.colors.secondaryDarker};
     color: ${({ theme }) => theme.colors.white};
     padding: 1.2rem;
     border-radius: 0.5rem;
     letter-spacing: 0.03rem;
 
-    & + article {
+    & + button {
       margin-top: 1.2rem;
     }
 
@@ -120,6 +142,14 @@ Widget.SuggestionWrapper = styled.section`
 
     transition: 0.3s;
   }
+`;
+
+Widget.Answer = styled.button`
+  background: ${(props) =>
+    props.isClicked
+      ? ({ theme }) =>
+          props.isWrong ? theme.colors.wrong : theme.colors.success
+      : ({ theme }) => theme.colors.secondaryDarker};
 `;
 
 export default Widget;

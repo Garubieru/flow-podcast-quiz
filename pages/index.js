@@ -1,34 +1,42 @@
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
-import QuizBackground from '../src/components/QuizBackground';
+import { QuizBackground, QuizContainer } from '../src/components/Quiz';
 import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import db from '../db.json';
 
-const QuizContainer = styled.div`
-  width: 100%;
-  max-width: 400px;
-  margin: auto 10%;
-  padding-top: 3rem;
-  display: flex;
-  flex-direction: column;
-
-  img {
-    align-self: center;
-  }
-
-  @media screen and (max-width: 500px) {
-    margin: auto;
-    padding-top: 1.2rem;
-
-    img {
-      align-self: flex-start;
-    }
-  }
-`;
-
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = useState('');
+  const [isError, setIsError] = useState(false);
+
+  const createError = (form) => {
+    const input = form.firstChild;
+    const error = document.createElement('p');
+    error.classList.add('error');
+    error.innerHTML = 'Digite um nome válido!';
+
+    input.after(error);
+    setIsError(true);
+  };
+
+  const cleanErrors = () => {
+    const error = document.querySelector('.error');
+    if (error) {
+      error.remove();
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    cleanErrors();
+    // eslint-disable-next-line no-console
+    if (name.length <= 0) return createError(e.target);
+    return router.push(`/quiz?name=${name}`);
+  };
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -47,9 +55,16 @@ export default function Home() {
               Teste seu conhecimento sobre o Flow Podcast, o melhor e mais
               ouvido Podcast do Brasil!
             </p>
-
-            <Widget.Input type="text" placeholder="Digite seu nome :)" />
-            <Widget.Button>Play</Widget.Button>
+            <form onSubmit={handleSubmit}>
+              <Widget.Input
+                isError={isError}
+                type="text"
+                placeholder="Digite seu nome :)"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+              />
+              <Widget.Button type="submit">Play</Widget.Button>
+            </form>
           </Widget.Content>
         </Widget>
         <Widget>
@@ -58,16 +73,16 @@ export default function Home() {
 
             <p>Veja os outros quizes que a comunidade da Alura fez.</p>
 
-            <Widget.SuggestionWrapper>
-              <article>gabriel/alura-react</article>
-              <article>claber/alura-react-quiz</article>
-              <article>felipe-gamer/quiz-nextjs</article>
-            </Widget.SuggestionWrapper>
+            <Widget.AnswersWrapper>
+              <button type="button">gabriel/alura-react</button>
+              <button type="button">claber/alura-react-quiz</button>
+              <button type="button">felipe-gamer/quiz-nextjs</button>
+            </Widget.AnswersWrapper>
           </Widget.Content>
         </Widget>
         <Footer />
       </QuizContainer>
-      <GitHubCorner projectUrl={'https://github.com/Garubieru'} />
+      <GitHubCorner projectUrl="https://github.com/Garubieru" />
     </QuizBackground>
   );
 }

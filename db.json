@@ -4,21 +4,44 @@
   "description": "Teste seu conhecimento sobre o Flow Podcast",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-      "title": "Como fazer um seletor por id via CSS?",
-      "description": "Essa é pra aquecer",
+      "image": "https://i.ytimg.com/vi/tC4VZai5vwM/maxresdefault.jpg",
+      "title": "Qual ano o Flow Podcast foi criado?",
+      "description": "Apenas aquecendo...",
       "answer": 2,
-      "alternatives": [".elemento", "*elemento", "#elemento", "%elemento"]
+      "alternatives": ["2016", "2017", "2018", "2019"]
     },
     {
-      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-      "title": "Como fazer um background gradiente com css?",
-      "description": "Faz tempo em haha",
+      "image": "https://assets.change.org/photos/8/ep/uw/HBEpUwOOokvbuet-800x450-noPad.jpg?1593395413",
+      "title": "Convidado que mais apareceu no flow?",
+      "description": "Hmmm...",
       "answer": 0,
       "alternatives": [
-        "background: linear-gradient(#e66465, #9198e5);",
-        "background: gradient(#e66465, #9198e5);"
+        "Arthur Petry",
+        "Lucas Inutilismo",
+        "Mamãe Falei",
+        "Cauê Moura"
       ]
+    },
+    {
+      "image": "https://pbs.twimg.com/media/EX8F3mSWoAEeTLZ.jpg",
+      "title": "Flow com maior views no youtube no momento:",
+      "description": "LUL",
+      "answer": 3,
+      "alternatives": ["Alok", "Matuê", "SUPER XANDÃO", "Danillo Gentili"]
+    },
+    {
+      "image": "https://i.ytimg.com/vi/dd4l0a_1e4c/maxresdefault.jpg",
+      "title": "Quem ganhou na rinha de robôs?",
+      "description": "f picatron",
+      "answer": 2,
+      "alternatives": ["Monark", "Igor", "Rato", "Iberê"]
+    },
+    {
+      "image": "https://i.ytimg.com/vi/05RqAex_Enw/maxresdefault.jpg",
+      "title": "Primeiro Flow que impulsionou o canal a atingir bolhas diferentes?",
+      "description": "bolhas...",
+      "answer": 1,
+      "alternatives": ["Cauê Moura", "Nando Moura", "Boulos", "Cellbit"]
     }
   ],
   "external": [""],

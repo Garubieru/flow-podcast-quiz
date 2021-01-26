@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
 
-    color: ${({ theme }) => theme.colors.white} 
+    color: ${({ theme }) => theme.colors.white}
   }
 
   html,
