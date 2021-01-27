@@ -1,65 +1,98 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import db from '../db.json';
 import { QuizBackground, QuizContainer } from '../src/components/Quiz';
-import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
+import QuizLogo from '../src/components/QuizLogo';
+import QuestionWidget from '../src/components/QuestionWidget';
+import Widget from '../src/components/Widget';
+
+// eslint-disable-next-line react/prop-types
+function QuizLoading() {
+  return (
+    <Widget>
+      <Widget.Header>Carregando...</Widget.Header>
+      <Widget.Loading url="https://mir-s3-cdn-cf.behance.net/project_modules/disp/585d0331234507.564a1d239ac5e.gif" />
+    </Widget>
+  );
+}
+
+// eslint-disable-next-line react/prop-types
+function QuizResult({ points }) {
+  return (
+    <Widget>
+      <Widget.Header>
+        <h1>Seu resultado</h1>
+      </Widget.Header>
+      <Widget.Content>Você acertou {points} de 5 perguntas!</Widget.Content>
+    </Widget>
+  );
+}
+
+const screenStates = {
+  QUIZ: 'QUIZ',
+  LOADING: 'LOADING',
+  RESULT: 'RESULT',
+};
 
 export default function Quiz() {
   const { questions } = db;
+  const totalQuestions = questions.length;
 
-  const [index, setIndex] = useState(0);
+  const [screenState, setScreenState] = useState('LOADING');
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [points, setPoints] = useState(0);
+  const index = currentQuestion;
+  const question = questions[index];
 
-  const quest = questions[index];
+  useEffect(() => {
+    function AwaitLoading() {
+      setTimeout(() => {
+        setScreenState('QUIZ');
+      }, 1000);
+    }
+
+    AwaitLoading();
+  }, []);
+
+  function setCurrentQuestionWithDelay(currentIndex, delay) {
+    setTimeout(() => {
+      if (currentIndex + 1 < totalQuestions) {
+        setCurrentQuestion(currentIndex + 1);
+      } else {
+        setScreenState('RESULT');
+      }
+    }, delay);
+  }
 
   const handleClick = (e) => {
     const userAnswer = e.target;
     const answers = userAnswer.parentElement.querySelectorAll('button');
     const answerIndex = [...answers].indexOf(userAnswer);
 
-    if (answerIndex !== quest.answer) {
-      userAnswer.setAttribute('style', 'background-color: #c91d1d');
-      setTimeout(() => {
-        setIndex(index + 1);
-      }, 1000);
-    } else {
+    if (answerIndex === question.answer) {
       userAnswer.setAttribute('style', 'background-color: #19df5c');
-      setTimeout(() => {
-        setIndex(index + 1);
-      }, 1000);
+      setPoints(points + 1);
+    } else {
+      userAnswer.setAttribute('style', 'background-color: #c91d1d');
     }
+
+    setCurrentQuestionWithDelay(index, 1000);
   };
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
-        <img
-          src="https://i.imgur.com/3CVN6S2.png"
-          alt=""
-          width={120}
-          height={120}
-        />
-        <Widget>
-          <Widget.Header>
-            <h1>
-              Pergunta {questions.indexOf(quest) + 1} de {questions.length}
-            </h1>
-          </Widget.Header>
-          <Widget.Image url={quest.image} />
-          <Widget.Content>
-            <h1>{quest.title}</h1>
-            <p>{quest.description}</p>
-            <Widget.AnswersWrapper>
-              {quest.alternatives.map((alternative) => (
-                <Widget.Answer
-                  type="button"
-                  onClick={handleClick}
-                  key={alternative}
-                >
-                  {alternative}
-                </Widget.Answer>
-              ))}
-            </Widget.AnswersWrapper>
-          </Widget.Content>
-        </Widget>
+        <QuizLogo />
+        {screenState === screenStates.LOADING && <QuizLoading />}
+        {screenState === screenStates.QUIZ && (
+          <QuestionWidget
+            question={question}
+            handleClick={handleClick}
+            totalQuestions={totalQuestions}
+            index={index}
+          />
+        )}
+        {screenState === screenStates.RESULT && <QuizResult points={points} />}
         <Footer />
       </QuizContainer>
     </QuizBackground>

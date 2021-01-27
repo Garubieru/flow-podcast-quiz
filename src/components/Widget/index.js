@@ -34,6 +34,18 @@ Widget.Header = styled.header`
 
   background: ${({ theme }) => theme.colors.primaryDark};
   padding: 2rem 3.5rem;
+  transition: 0.3s;
+
+  .back-btn + h1 {
+    margin-left: 1rem;
+  }
+  .back-btn {
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 `;
 
 Widget.Content = styled.div`
@@ -55,70 +67,6 @@ Widget.Image = styled.div`
   background-size: cover;
   width: 100%;
   height: 180px;
-`;
-
-Widget.Input = styled.input`
-  background: none;
-  border: 1px solid
-    ${(props) =>
-      props.isError
-        ? ({ theme }) => theme.colors.wrong
-        : ({ theme }) => theme.colors.primaryDark};
-
-  width: 100%;
-  height: 5rem;
-
-  padding: 0 1rem;
-  border-radius: 0.5rem;
-
-  font-size: 1.6rem;
-  color: ${({ theme }) => theme.colors.white};
-
-  &::placeholder {
-    color: ${(props) =>
-      props.isError
-        ? ({ theme }) => theme.colors.wrong
-        : ({ theme }) => theme.colors.primaryDark};
-  }
-
-  &:hover,
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.colors.secondary};
-    &::placeholder {
-      color: ${({ theme }) => theme.colors.secondary};
-    }
-  }
-
-  transition: 0.3s;
-`;
-
-Widget.Button = styled.button`
-  cursor: pointer;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 4.5rem;
-  margin-top: 2rem;
-
-  color: ${({ theme }) => theme.colors.white};
-  font-size: 1.8rem;
-  font-weight: bold;
-  background: ${({ theme }) => theme.colors.secondaryDarker};
-  border: none;
-  border-radius: 0.5rem;
-
-  outline: none;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-
-  transition: 0.3s;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.primaryDark};
-    color: ${({ theme }) => theme.colors.black};
-  }
 `;
 
 Widget.AnswersWrapper = styled.section`
@@ -150,6 +98,14 @@ Widget.Answer = styled.button`
       ? ({ theme }) =>
           props.isWrong ? theme.colors.wrong : theme.colors.success
       : ({ theme }) => theme.colors.secondaryDarker};
+`;
+
+Widget.Loading = styled.div`
+  background: url(${(props) => props.url});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20%;
+  height: 120px;
 `;
 
 export default Widget;

@@ -5,47 +5,28 @@ import { QuizBackground, QuizContainer } from '../src/components/Quiz';
 import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
+import Input from '../src/components/Input';
+import Button from '../src/components/Button';
 import db from '../db.json';
+import QuizLogo from '../src/components/QuizLogo';
 
 export default function Home() {
   const router = useRouter();
   const [name, setName] = useState('');
   const [isError, setIsError] = useState(false);
 
-  const createError = (form) => {
-    const input = form.firstChild;
-    const error = document.createElement('p');
-    error.classList.add('error');
-    error.innerHTML = 'Digite um nome válido!';
-
-    input.after(error);
-    setIsError(true);
-  };
-
-  const cleanErrors = () => {
-    const error = document.querySelector('.error');
-    if (error) {
-      error.remove();
-    }
-  };
+  const handleChange = (e) => setName(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    cleanErrors();
-    // eslint-disable-next-line no-console
-    if (name.length <= 0) return createError(e.target);
+    if (name.length <= 0) return setIsError(true);
     return router.push(`/quiz?name=${name}`);
   };
 
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
-        <img
-          src="https://i.imgur.com/3CVN6S2.png"
-          alt=""
-          width={120}
-          height={120}
-        />
+        <QuizLogo />
         <Widget>
           <Widget.Header>
             <h1>Flow Podcast</h1>
@@ -56,14 +37,13 @@ export default function Home() {
               ouvido Podcast do Brasil!
             </p>
             <form onSubmit={handleSubmit}>
-              <Widget.Input
+              <Input
+                onChange={handleChange}
+                placeholder="Digite seu nome"
                 isError={isError}
-                type="text"
-                placeholder="Digite seu nome :)"
-                onChange={(e) => setName(e.target.value)}
                 value={name}
               />
-              <Widget.Button type="submit">Play</Widget.Button>
+              <Button type="submit">Play</Button>
             </form>
           </Widget.Content>
         </Widget>
