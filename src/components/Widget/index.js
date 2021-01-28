@@ -89,6 +89,10 @@ Widget.Answer = styled.a`
     margin-top: 1.2rem;
   }
 
+  & + a {
+    margin-top: 1.2rem;
+  }
+
   &[data-selected='true'] {
     background-color: ${({ theme }) => theme.colors.primaryDark};
 
