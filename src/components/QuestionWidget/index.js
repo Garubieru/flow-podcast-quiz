@@ -22,9 +22,9 @@ export default function QuestionWidget({
     setQuestionIsSubmited(true);
     addResult(isCorrect);
     setTimeout(() => {
-      onSubmit();
       setSelectedAlternative(undefined);
       setQuestionIsSubmited(false);
+      onSubmit();
     }, 1000);
   };
 
