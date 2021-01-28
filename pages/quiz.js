@@ -6,6 +6,7 @@ import Footer from '../src/components/Footer';
 import QuizLogo from '../src/components/QuizLogo';
 import QuestionWidget from '../src/components/QuestionWidget';
 import Widget from '../src/components/Widget';
+import Button from '../src/components/Button';
 
 // eslint-disable-next-line react/prop-types
 function QuizLoading() {
@@ -30,6 +31,14 @@ function QuizResult({ results }) {
       <Widget.Content>
         Parabéns, {name}. Você acertou{' '}
         {resultsArray.filter((result) => result).length} de 5 perguntas!
+        <Widget.Results>
+          {resultsArray.map((result, index) => (
+            <li key={`result_${result}`} data-error={result}>{`${
+              index + 1
+            }ª Pergunta: ${result ? 'Acertou' : 'Errou'}`}</li>
+          ))}
+        </Widget.Results>
+        <Button onClick={() => router.push('/')}>MENU</Button>
       </Widget.Content>
     </Widget>
   );
@@ -53,7 +62,7 @@ export default function Quiz() {
 
   useEffect(() => {
     setTimeout(() => {
-      setScreenState('RESULT');
+      setScreenState('QUIZ');
     }, 1000);
   }, []);
 

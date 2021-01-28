@@ -113,4 +113,21 @@ Widget.Loading = styled.div`
   height: 120px;
 `;
 
+Widget.Results = styled.ul`
+  li {
+    padding: 0.8rem;
+
+    margin-top: 1.2rem;
+    border-radius: 0.5rem;
+
+    &[data-error='true'] {
+      background-color: ${({ theme }) => theme.colors.success};
+    }
+
+    &[data-error='false'] {
+      background-color: ${({ theme }) => theme.colors.wrong};
+    }
+  }
+`;
+
 export default Widget;

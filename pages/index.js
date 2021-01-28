@@ -30,13 +30,10 @@ export default function Home() {
         <QuizLogo />
         <Widget>
           <Widget.Header>
-            <h1>Flow Podcast</h1>
+            <h1>{db.title}</h1>
           </Widget.Header>
           <Widget.Content>
-            <p>
-              Teste seu conhecimento sobre o Flow Podcast, o melhor e mais
-              ouvido Podcast do Brasil!
-            </p>
+            <p>{db.description}</p>
             <form onSubmit={handleSubmit}>
               <Input
                 onChange={handleChange}
@@ -53,10 +50,21 @@ export default function Home() {
             <h1>Quizes da galera.</h1>
 
             <p>Veja os outros quizes que a comunidade da Alura fez.</p>
-
-            <Widget.Answer>gabriel/alura-react</Widget.Answer>
-            <Widget.Answer>claber/alura-react-quiz</Widget.Answer>
-            <Widget.Answer>felipe-gamer/quiz-nextjs</Widget.Answer>
+            {db.external.map((url) => {
+              const prepareUrl = url
+                .replace(/\//g, '')
+                .replace('https:', '')
+                .replace('.vercel.app', '');
+              const [repoName, user] = prepareUrl.split('.');
+              return (
+                <Widget.Answer
+                  key={`quiz_${repoName}`}
+                  href={`/quiz/${user}__${repoName}?name=${name}`}
+                >
+                  {`${user}/${repoName}`}
+                </Widget.Answer>
+              );
+            })}
           </Widget.Content>
         </Widget>
         <Footer />

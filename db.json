@@ -1,7 +1,7 @@
 {
   "bg": "https://i.imgur.com/TIeypHt.png",
   "title": "Flow Quiz",
-  "description": "Teste seu conhecimento sobre o Flow Podcast",
+  "description": "Teste seu conhecimento sobre o Flow Podcast.",
   "questions": [
     {
       "image": "https://i.ytimg.com/vi/tC4VZai5vwM/maxresdefault.jpg",
@@ -44,7 +44,10 @@
       "alternatives": ["Cauê Moura", "Nando Moura", "Boulos", "Cellbit"]
     }
   ],
-  "external": [""],
+  "external": [
+    "https://aluraquiz-css.omariosouto.vercel.app/",
+    "https://aluraquiz-marvel.omariosouto.vercel.app/"
+  ],
   "theme": {
     "colors": {
       "primary": "#dee01f",
