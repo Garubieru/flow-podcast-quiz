@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import db from '../db.json';
 import { QuizBackground, QuizContainer } from '../src/components/Quiz';
 import Footer from '../src/components/Footer';
@@ -18,15 +19,17 @@ function QuizLoading() {
 
 // eslint-disable-next-line react/prop-types
 function QuizResult({ results }) {
+  const router = useRouter();
+  const { name } = router.query;
   const resultsArray = results;
   return (
     <Widget>
       <Widget.Header>
-        <h1>Seu resultado</h1>
+        <h1>Seu resultado:</h1>
       </Widget.Header>
       <Widget.Content>
-        Você acertou {resultsArray.filter((result) => result).length} de 5
-        perguntas!
+        Parabéns, {name}. Você acertou{' '}
+        {resultsArray.filter((result) => result).length} de 5 perguntas!
       </Widget.Content>
     </Widget>
   );
@@ -50,7 +53,7 @@ export default function Quiz() {
 
   useEffect(() => {
     setTimeout(() => {
-      setScreenState('QUIZ');
+      setScreenState('RESULT');
     }, 1000);
   }, []);
 
