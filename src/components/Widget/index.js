@@ -69,35 +69,36 @@ Widget.Image = styled.div`
   height: 180px;
 `;
 
-Widget.AnswersWrapper = styled.section`
-  button {
-    cursor: pointer;
-    width: 100%;
-    border: none;
-    background: ${({ theme }) => theme.colors.secondaryDarker};
-    color: ${({ theme }) => theme.colors.white};
-    padding: 1.2rem;
-    border-radius: 0.5rem;
-    letter-spacing: 0.03rem;
+Widget.Answer = styled.a`
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  border: none;
+  background: ${({ theme }) => theme.colors.secondaryDarker};
+  color: ${({ theme }) => theme.colors.white};
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+  letter-spacing: 0.03rem;
+  transition: 0.3s;
 
-    & + button {
-      margin-top: 1.2rem;
-    }
-
-    &:hover {
-      background: #000000;
-    }
-
-    transition: 0.3s;
+  &:hover {
+    background: #000000;
   }
-`;
 
-Widget.Answer = styled.button`
-  background: ${(props) =>
-    props.isClicked
-      ? ({ theme }) =>
-          props.isWrong ? theme.colors.wrong : theme.colors.success
-      : ({ theme }) => theme.colors.secondaryDarker};
+  & + label {
+    margin-top: 1.2rem;
+  }
+
+  &[data-selected='true'] {
+    background-color: ${({ theme }) => theme.colors.primaryDark};
+
+    &[data-status='SUCCESS'] {
+      background-color: ${({ theme }) => theme.colors.success};
+    }
+    &[data-status='ERROR'] {
+      background-color: ${({ theme }) => theme.colors.wrong};
+    }
+  }
 `;
 
 Widget.Loading = styled.div`

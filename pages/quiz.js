@@ -17,13 +17,17 @@ function QuizLoading() {
 }
 
 // eslint-disable-next-line react/prop-types
-function QuizResult({ points }) {
+function QuizResult({ results }) {
+  const resultsArray = results;
   return (
     <Widget>
       <Widget.Header>
         <h1>Seu resultado</h1>
       </Widget.Header>
-      <Widget.Content>Você acertou {points} de 5 perguntas!</Widget.Content>
+      <Widget.Content>
+        Você acertou {resultsArray.filter((result) => result).length} de 5
+        perguntas!
+      </Widget.Content>
     </Widget>
   );
 }
@@ -38,45 +42,29 @@ export default function Quiz() {
   const { questions } = db;
   const totalQuestions = questions.length;
 
+  const [results, setResults] = useState([]);
   const [screenState, setScreenState] = useState('LOADING');
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [points, setPoints] = useState(0);
   const index = currentQuestion;
   const question = questions[index];
 
   useEffect(() => {
-    function AwaitLoading() {
-      setTimeout(() => {
-        setScreenState('QUIZ');
-      }, 1000);
-    }
-
-    AwaitLoading();
+    setTimeout(() => {
+      setScreenState('QUIZ');
+    }, 1000);
   }, []);
 
-  function setCurrentQuestionWithDelay(currentIndex, delay) {
-    setTimeout(() => {
-      if (currentIndex + 1 < totalQuestions) {
-        setCurrentQuestion(currentIndex + 1);
-      } else {
-        setScreenState('RESULT');
-      }
-    }, delay);
-  }
+  const addResult = (result) => {
+    setResults([...results, result]);
+  };
 
-  const handleClick = (e) => {
-    const userAnswer = e.target;
-    const answers = userAnswer.parentElement.querySelectorAll('button');
-    const answerIndex = [...answers].indexOf(userAnswer);
-
-    if (answerIndex === question.answer) {
-      userAnswer.setAttribute('style', 'background-color: #19df5c');
-      setPoints(points + 1);
+  const handleSubmitQuiz = () => {
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < totalQuestions) {
+      setCurrentQuestion(nextQuestion);
     } else {
-      userAnswer.setAttribute('style', 'background-color: #c91d1d');
+      setScreenState('RESULT');
     }
-
-    setCurrentQuestionWithDelay(index, 1000);
   };
 
   return (
@@ -86,13 +74,16 @@ export default function Quiz() {
         {screenState === screenStates.LOADING && <QuizLoading />}
         {screenState === screenStates.QUIZ && (
           <QuestionWidget
-            question={question}
-            handleClick={handleClick}
-            totalQuestions={totalQuestions}
             index={index}
+            question={question}
+            onSubmit={handleSubmitQuiz}
+            totalQuestions={totalQuestions}
+            addResult={addResult}
           />
         )}
-        {screenState === screenStates.RESULT && <QuizResult points={points} />}
+        {screenState === screenStates.RESULT && (
+          <QuizResult results={results} />
+        )}
         <Footer />
       </QuizContainer>
     </QuizBackground>

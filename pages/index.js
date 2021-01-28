@@ -7,8 +7,9 @@ import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import Input from '../src/components/Input';
 import Button from '../src/components/Button';
-import db from '../db.json';
 import QuizLogo from '../src/components/QuizLogo';
+
+import db from '../db.json';
 
 export default function Home() {
   const router = useRouter();
@@ -53,11 +54,9 @@ export default function Home() {
 
             <p>Veja os outros quizes que a comunidade da Alura fez.</p>
 
-            <Widget.AnswersWrapper>
-              <button type="button">gabriel/alura-react</button>
-              <button type="button">claber/alura-react-quiz</button>
-              <button type="button">felipe-gamer/quiz-nextjs</button>
-            </Widget.AnswersWrapper>
+            <Widget.Answer>gabriel/alura-react</Widget.Answer>
+            <Widget.Answer>claber/alura-react-quiz</Widget.Answer>
+            <Widget.Answer>felipe-gamer/quiz-nextjs</Widget.Answer>
           </Widget.Content>
         </Widget>
         <Footer />

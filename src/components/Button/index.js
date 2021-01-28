@@ -28,6 +28,11 @@ const Button = styled.button`
     background: ${({ theme }) => theme.colors.primaryDark};
     color: ${({ theme }) => theme.colors.black};
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: ${({ theme }) => theme.colors.secondaryDarker};
+  }
 `;
 
 Button.propTypes = {
