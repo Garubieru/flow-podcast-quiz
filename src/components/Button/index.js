@@ -11,10 +11,10 @@ const Button = styled.button`
   height: 4.5rem;
   margin-top: 2rem;
 
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.contrastText};
   font-size: 1.8rem;
   font-weight: bold;
-  background: ${({ theme }) => theme.colors.secondaryDarker};
+  background: ${({ theme }) => theme.colors.primary};
   border: none;
   border-radius: 0.5rem;
 
@@ -25,13 +25,13 @@ const Button = styled.button`
   transition: 0.3s;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.primaryDark};
-    color: ${({ theme }) => theme.colors.black};
+    background: ${({ theme }) => theme.colors.mainBg};
+    color: ${({ theme }) => theme.colors.contrastText};
   }
 
   &:disabled {
     cursor: not-allowed;
-    background: ${({ theme }) => theme.colors.secondaryDarker};
+    background: ${({ theme }) => theme.colors.mainBg};
   }
 `;
 

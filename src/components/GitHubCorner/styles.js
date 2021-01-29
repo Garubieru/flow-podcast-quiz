@@ -9,12 +9,12 @@ export const Wrapper = styled.div`
 `;
 
 export const SVGWrapper = styled.svg`
-  fill: ${({ theme }) => theme.colors.primaryDark};
-  color: ${({ theme }) => theme.colors.black};
+  fill: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.mainBg};
   cursor: pointer;
   transition: 0.3s;
   &:hover {
-    fill: ${({ theme }) => theme.colors.primaryDark};
+    fill: ${({ theme }) => theme.colors.secondary};
   }
   &:hover .octo-arm {
     animation: octocat-wave 560ms ease-in-out;

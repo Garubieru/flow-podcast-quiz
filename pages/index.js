@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
+import { motion } from 'framer-motion';
+
 import { QuizBackground, QuizContainer } from '../src/components/Quiz';
 import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
@@ -8,6 +10,7 @@ import GitHubCorner from '../src/components/GitHubCorner';
 import Input from '../src/components/Input';
 import Button from '../src/components/Button';
 import QuizLogo from '../src/components/QuizLogo';
+import Link from '../src/components/Link';
 
 import db from '../db.json';
 
@@ -28,7 +31,16 @@ export default function Home() {
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
         <QuizLogo />
-        <Widget>
+        <Widget
+          as={motion.section}
+          transition={{ delay: 0.6, duration: 1 }}
+          variants={{
+            show: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: '100%' },
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Widget.Header>
             <h1>{db.title}</h1>
           </Widget.Header>
@@ -45,7 +57,16 @@ export default function Home() {
             </form>
           </Widget.Content>
         </Widget>
-        <Widget>
+        <Widget
+          as={motion.section}
+          transition={{ delay: 0.9, duration: 1 }}
+          variants={{
+            show: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: '80%' },
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Widget.Content>
             <h1>Quizes da galera.</h1>
 
@@ -58,8 +79,10 @@ export default function Home() {
               const [repoName, user] = prepareUrl.split('.');
               return (
                 <Widget.Answer
+                  as={Link}
                   key={`quiz_${repoName}`}
-                  href={`/quiz/${user}__${repoName}?name=${name}`}
+                  href={`/quiz/${repoName}__${user}?name=${name}`}
+                  data-disabled={name.length === 0}
                 >
                   {`${user}/${repoName}`}
                 </Widget.Answer>
@@ -67,7 +90,16 @@ export default function Home() {
             })}
           </Widget.Content>
         </Widget>
-        <Footer />
+        <Footer
+          as={motion.section}
+          transition={{ delay: 1.2, duration: 1 }}
+          variants={{
+            show: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: '60%' },
+          }}
+          initial="hidden"
+          animate="show"
+        />
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/Garubieru" />
     </QuizBackground>

@@ -1,8 +1,10 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 import Widget from '../Widget';
 import Button from '../Button';
+import BackLinkArrow from '../BackLinkArrow';
 
 export default function QuestionWidget({
   totalQuestions,
@@ -29,8 +31,18 @@ export default function QuestionWidget({
   };
 
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      transition={{ duration: 0.7 }}
+      variants={{
+        show: { opacity: 1, x: 0 },
+        hidden: { opacity: 0, x: '-30%' },
+      }}
+      initial="hidden"
+      animate="show"
+    >
       <Widget.Header>
+        <BackLinkArrow href="/" />
         <h1>
           Pergunta {index + 1} de {totalQuestions}
         </h1>

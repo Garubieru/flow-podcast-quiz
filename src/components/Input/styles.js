@@ -6,7 +6,7 @@ const InputBase = styled.input`
     ${(props) =>
       props.isError
         ? ({ theme }) => theme.colors.wrong
-        : ({ theme }) => theme.colors.primaryDark};
+        : ({ theme }) => theme.colors.primary};
 
   width: 100%;
   height: 5rem;
@@ -16,20 +16,14 @@ const InputBase = styled.input`
 
   font-size: 1.6rem;
   color: ${({ theme }) => theme.colors.white};
+  transition: 0.3s;
+  color: ${({ theme }) => theme.colors.contrastText};
 
   &::placeholder {
     color: ${(props) =>
       props.isError
         ? ({ theme }) => theme.colors.wrong
-        : ({ theme }) => theme.colors.primaryDark};
-  }
-
-  &:hover,
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.colors.secondary};
-    &::placeholder {
-      color: ${({ theme }) => theme.colors.secondary};
-    }
+        : ({ theme }) => theme.colors.primary};
   }
 `;
 

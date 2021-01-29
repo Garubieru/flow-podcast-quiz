@@ -50,15 +50,12 @@
   ],
   "theme": {
     "colors": {
-      "primary": "#dee01f",
-      "primaryDark": "#bc9035",
-      "secondary": "#9a9997",
-      "secondaryDark": "#242424",
-      "secondaryDarker": "#0e0e0e",
+      "primary": "#bc9035",
+      "secondary": "#242424",
       "mainBg": "#000000",
+      "contrastText": "#f8f8f8",
       "wrong": "#c91d1d",
-      "success": "#19df5c",
-      "white": "#f8f8f8"
+      "success": "#19df5c"
     },
     "borderRadius": "0.5rem"
   }

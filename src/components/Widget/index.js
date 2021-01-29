@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const Widget = styled.div`
-  background: ${({ theme }) => theme.colors.secondaryDark};
+  background: ${({ theme }) => theme.colors.secondary};
 
   margin: 2rem 0;
   border-radius: 0.5rem;
-  border: 1px solid ${({ theme }) => theme.colors.primaryDark};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
   overflow: hidden;
 
   h1,
@@ -32,19 +32,10 @@ Widget.Header = styled.header`
   align-items: center;
   justify-content: flex-start;
 
-  background: ${({ theme }) => theme.colors.primaryDark};
+  background: ${({ theme }) => theme.colors.primary};
   padding: 2rem 3.5rem;
-  transition: 0.3s;
-
-  .back-btn + h1 {
+  a + h1 {
     margin-left: 1rem;
-  }
-  .back-btn {
-    cursor: pointer;
-
-    &:hover {
-      opacity: 0.5;
-    }
   }
 `;
 
@@ -74,12 +65,13 @@ Widget.Answer = styled.a`
   display: block;
   width: 100%;
   border: none;
-  background: ${({ theme }) => theme.colors.secondaryDarker};
-  color: ${({ theme }) => theme.colors.white};
+  background: rgba(0, 0, 0, 0.7);
+  color: ${({ theme }) => theme.colors.contrastText};
   padding: 1.2rem;
   border-radius: 0.5rem;
   letter-spacing: 0.03rem;
   transition: 0.3s;
+  text-decoration: none;
 
   &:hover {
     background: #000000;
@@ -94,7 +86,7 @@ Widget.Answer = styled.a`
   }
 
   &[data-selected='true'] {
-    background-color: ${({ theme }) => theme.colors.primaryDark};
+    background-color: ${({ theme }) => theme.colors.primary};
 
     &[data-status='SUCCESS'] {
       background-color: ${({ theme }) => theme.colors.success};
@@ -102,6 +94,11 @@ Widget.Answer = styled.a`
     &[data-status='ERROR'] {
       background-color: ${({ theme }) => theme.colors.wrong};
     }
+  }
+
+  &[data-disabled='true'] {
+    pointer-events: none;
+    background-color: ${({ theme }) => theme.colors.wrong};
   }
 `;
 
