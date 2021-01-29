@@ -7,6 +7,7 @@ export default function FlowSocialIcons() {
   return (
     <IconsWrapper>
       <IconLink
+        whileHover={{ scale: 1.1 }}
         target="_blank"
         href="https://www.youtube.com/channel/UC4ncvgh5hFr5O83MH7-jRJg"
         colorHover="#C4302B"
@@ -14,6 +15,7 @@ export default function FlowSocialIcons() {
         <FiYoutube />
       </IconLink>
       <IconLink
+        whileHover={{ scale: 1.1 }}
         target="_blank"
         href="https://www.twitch.tv/flowpodcast"
         colorHover="#6441A5"
@@ -21,6 +23,7 @@ export default function FlowSocialIcons() {
         <FiTwitch />
       </IconLink>
       <IconLink
+        whileHover={{ scale: 1.1 }}
         target="_blank"
         href="https://twitter.com/flowpdc"
         colorHover="#08a09e"

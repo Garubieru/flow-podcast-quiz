@@ -54,7 +54,9 @@ export default function Home() {
                 isError={isError}
                 value={name}
               />
-              <Button type="submit">Play</Button>
+              <Button type="submit" whileTap={{ scale: 1.2 }}>
+                Play
+              </Button>
             </form>
           </Widget.Content>
         </Widget>

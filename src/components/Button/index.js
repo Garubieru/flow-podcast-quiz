@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
-const Button = styled.button`
+const Button = styled(motion.button)`
   cursor: pointer;
   width: 100%;
   display: flex;

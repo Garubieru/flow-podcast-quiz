@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const IconsWrapper = styled.div`
   position: absolute;
@@ -16,7 +17,8 @@ export const IconsWrapper = styled.div`
   }
 `;
 
-export const IconLink = styled.a`
+export const IconLink = styled(motion.a)`
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
