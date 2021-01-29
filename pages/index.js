@@ -11,6 +11,7 @@ import Input from '../src/components/Input';
 import Button from '../src/components/Button';
 import QuizLogo from '../src/components/QuizLogo';
 import Link from '../src/components/Link';
+import FlowSocialIcons from '../src/components/FlowSocialIcons';
 
 import db from '../db.json';
 
@@ -102,6 +103,7 @@ export default function Home() {
         />
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/Garubieru" />
+      <FlowSocialIcons />
     </QuizBackground>
   );
 }
